@@ -1,10 +1,15 @@
 .env
-.vscode
+.vscode/
 
-*. pyc
+# Python cache
+*.pyc
+__pycache__/
+
+# Mac files
 .DS_Store
-_pycache
 
+# Virtual env
 venv/
 
-.streamlit/
+# Streamlit secrets
+.streamlit/secrets.toml
