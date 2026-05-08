@@ -13,3 +13,11 @@ venv/
 
 # Streamlit secrets
 .streamlit/secrets.toml
+
+# ML / cache
+*.pkl
+*.joblib
+
+# Images dataset
+datasets/
+uploads/
