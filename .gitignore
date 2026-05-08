@@ -21,3 +21,7 @@ venv/
 # Images dataset
 datasets/
 uploads/
+
+# Voice
+librosa
+resemblyzer
