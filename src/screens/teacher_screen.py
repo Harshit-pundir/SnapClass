@@ -1,4 +1,6 @@
 import streamlit as st
+from src.components.dialog_share_subject import share_subject_dialog
+from src.components.subject_card import subject_card
 from src.components.dialog_create_subject import create_subject_dialog
 from src.components.footer import footer_dashboard
 from src.ui.base_layout import style_background_dashboard, style_base_layout
@@ -66,7 +68,7 @@ def teacher_dashboard():
     with tab3:
         type3 = "primary" if st.session_state.current_teacher_tab == "attendance_records" else "tertiary"
 
-        if st.button('Attendance Records', type=type3, width='stretch', icon=':material/ar_on_you:'):
+        if st.button('Attendance Records', type=type3, width='stretch', icon=':material/cards_stack:'):
             st.session_state.current_teacher_tab = "attendance_records"
             st.rerun()
 
@@ -88,24 +90,37 @@ def teacher_tab_take_attendance():
 
 def teacher_tab_manage_subjects():
     teacher_id = st.session_state.teacher_data['teacher_id']
-
     col1, col2 = st.columns(2)
-
     with col1:
-        st.header('Manage Subjects')
+        st.header('Manage Subjects', width='stretch')
 
     with col2:
         if st.button('Create New Subject', width='stretch'):
             create_subject_dialog(teacher_id)
 
-    subjects = get_teacher_subjects(teacher_id)
 
+    # LIST all SUBJECTS
+    subjects = get_teacher_subjects(teacher_id)
     if subjects:
         for sub in subjects:
-            st.write(sub)
+            stats = [
+                ("🫂", "Students", sub['total_students']),
+                ("🕰️", "Classes", sub['total_classes']),
+            ]
+        def share_btn():
+            if st.button(f"Share Code: {sub['name']}", key=f"share_{sub['subject_code']}", icon=":material/share:"):
+                share_subject_dialog(sub['name'], sub['subject_code'])
+            st.space()
 
+        subject_card(
+            name = sub['name'],
+            code = sub['subject_code'],
+            section = sub['section'],
+            stats=stats,
+            footer_callback=share_btn
+        )
     else:
-        st.info("No subjects found")
+        st.info("NO SUBJECTS FOUND. CREATE ONE ABOVE")
 
 def teacher_tab_attendance_records():
     st.header('Attendance Records')

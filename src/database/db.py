@@ -71,22 +71,21 @@ def get_all_students():
     return response.data
 
 
-def create_subject(subject_code , name , section , set_name , teacher_id):
+def create_subject(subject_code , name , section , teacher_id):
     data ={
         "subject_code" : subject_code,
         "name" : name,
         "section" : section , 
-        "set_name" : set_name,
         "teacher_id" : teacher_id
     } 
 
-    response = supabase.table("subjects").insert(data).execute()  
+    response = supabase.table("subject").insert(data).execute()  
     return response.data
 
 def get_teacher_subjects(teacher_id):
     response = (
         supabase
-        .table("subjects")
+        .table("subject")
         .select("*, subject_students(count), attendance_logs(timestamp)")
         .eq("teacher_id", teacher_id)
         .execute()
