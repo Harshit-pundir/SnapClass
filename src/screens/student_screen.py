@@ -3,7 +3,7 @@ import streamlit as st
 import time
 
 from src.components.dialog_enroll import enroll_dialog
-from src.database.db import get_all_students, create_student
+from src.database.db import get_all_students, create_student, get_student_attendance, get_student_subjects
 from src.pipelines.voice_pipeline import get_voice_embedding
 from src.ui.base_layout import style_background_dashboard, style_base_layout
 from PIL import Image
@@ -43,6 +43,9 @@ def student_dashboard():
 
 
     st.divider()
+    with st.spinner('Loading your enrolled subjects'):
+        subjects = get_student_subjects(student_id)
+        logs = get_student_attendance(student_id)
     footer_dashboard()        
 
 def student_screen():
