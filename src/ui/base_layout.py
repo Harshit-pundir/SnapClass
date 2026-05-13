@@ -73,13 +73,12 @@ def style_base_layout():
         /* FIX DEPLOYED TEXT COLORS */
 
         .stMarkdown p,
-        .stMarkdown div,
-        .stMarkdown span,
-        .stMarkdown label,
-        .stText,
-        .stCaption {
-            color: black !important;
-        }
+            .stMarkdown span,
+            .stMarkdown label,
+            .stText,
+            .stCaption {
+                color: black !important;
+            }
 
         button{
             border-radius: 1.5rem !important;
