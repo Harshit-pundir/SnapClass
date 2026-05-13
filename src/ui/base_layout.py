@@ -16,6 +16,20 @@ def style_background_home():
                 border-radius: 5rem !important;
             }
 
+            /* FIX CARD TEXT COLORS */
+
+            .stApp div[data-testid="stColumn"] h1,
+            .stApp div[data-testid="stColumn"] h2,
+            .stApp div[data-testid="stColumn"] h3,
+            .stApp div[data-testid="stColumn"] h4,
+            .stApp div[data-testid="stColumn"] h5,
+            .stApp div[data-testid="stColumn"] h6,
+            .stApp div[data-testid="stColumn"] p,
+            .stApp div[data-testid="stColumn"] span,
+            .stApp div[data-testid="stColumn"] label {
+                color: black !important;
+            }
+
         </style>
         """, unsafe_allow_html=True)
 
@@ -42,7 +56,7 @@ def style_base_layout():
         @import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
-        /* Hide Streamlit Top Bar */
+        /* Hide Top Bar of streamlit */
 
         #MainMenu, footer, header {
             visibility: hidden;
@@ -69,16 +83,6 @@ def style_base_layout():
         h3, h4, p {
             font-family: 'Outfit', sans-serif !important;
         }
-
-        /* FIX DEPLOYED TEXT COLORS */
-
-        .stMarkdown p,
-            .stMarkdown span,
-            .stMarkdown label,
-            .stText,
-            .stCaption {
-                color: black !important;
-            }
 
         button{
             border-radius: 1.5rem !important;
