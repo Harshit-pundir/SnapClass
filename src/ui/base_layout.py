@@ -43,13 +43,9 @@ def style_background_dashboard():
                 background: #E0E3FF !important;
             }
 
-            .stApp label {
-                color: black !important;
-            }
+            /* Only normal helper text black */
 
-            .stCameraInput p,
-            .stAlert p,
-            .stMarkdown p {
+            .stCameraInput label {
                 color: black !important;
             }
 
