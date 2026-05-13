@@ -43,10 +43,19 @@ def style_background_dashboard():
                 background: #E0E3FF !important;
             }
 
-            /* Only normal helper text black */
+            /* Dashboard headings */
 
-            .stCameraInput label {
-                color: black !important;
+            [data-testid="stHeading"]{
+                color:#5865F2 !important;
+            }
+
+            /* Normal labels/text */
+
+            .stCameraInput label,
+            .stTextInput label,
+            .stSelectbox label,
+            .stMarkdown p {
+                color:black !important;
             }
 
         </style>
