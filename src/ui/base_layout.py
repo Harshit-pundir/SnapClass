@@ -16,7 +16,7 @@ def style_background_home():
                 border-radius: 5rem !important;
             }
 
-            /* FIX CARD TEXT COLORS */
+            /* FIX HOME CARD TEXT COLORS */
 
             .stApp div[data-testid="stColumn"] h1,
             .stApp div[data-testid="stColumn"] h2,
@@ -41,6 +41,16 @@ def style_background_dashboard():
 
             .stApp {
                 background: #E0E3FF !important;
+            }
+
+            .stApp label {
+                color: black !important;
+            }
+
+            .stCameraInput p,
+            .stAlert p,
+            .stMarkdown p {
+                color: black !important;
             }
 
         </style>
