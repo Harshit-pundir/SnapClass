@@ -192,7 +192,6 @@ def teacher_tab_take_attendance():
 
 
 
-
 def teacher_tab_manage_subjects():
     teacher_id = st.session_state.teacher_data['teacher_id']
     col1, col2 = st.columns(2)
@@ -363,9 +362,9 @@ def teacher_screen_register():
     st.space()
 
     
-    teacher_username = st.text_input("Enter username", placeholder='ananyaroy')
+    teacher_username = st.text_input("Enter username", placeholder='harshitpundir')
 
-    teacher_name = st.text_input("Enter name", placeholder='Ananya Roy')
+    teacher_name = st.text_input("Enter name", placeholder='Harshit Pundir')
 
     teacher_pass = st.text_input("Enter password", type='password', placeholder="Enter password")
 

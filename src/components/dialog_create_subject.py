@@ -1,6 +1,8 @@
 import streamlit as st
 from src.database.db import create_subject
 
+
+
 @st.dialog("Create New Subject")
 def create_subject_dialog(teacher_id):
     st.write("Enter the details of new subject")
@@ -18,4 +20,4 @@ def create_subject_dialog(teacher_id):
             except Exception as e:
                 st.error(f"Error: {str(e)}")
         else:
-            st.warning("Please fill all the fields")                  
+            st.warning("Please fill all the fields")

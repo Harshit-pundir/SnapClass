@@ -10,7 +10,7 @@ def auto_enroll_dialog(subject_code):
     student_id = st.session_state.student_data['student_id']
 
 
-    res = supabase.table('subject').select('subject_id, name').eq('subject_code', subject_code).execute()
+    res = supabase.table('subjects').select('subject_id, name').eq('subject_code', subject_code).execute()
     if not res.data:
         st.error('Subject Code not found!')
         if st.button('Close'):
