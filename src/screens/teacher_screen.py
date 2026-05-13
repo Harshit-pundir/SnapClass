@@ -304,7 +304,7 @@ def teacher_screen_login():
     st.space()
 
 
-    teacher_username = st.text_input("Enter username", placeholder='ananyaroy')
+    teacher_username = st.text_input("Enter username", placeholder='harshitpundir')
 
     teacher_pass = st.text_input("Enter password", type='password', placeholder="Enter password")
 
