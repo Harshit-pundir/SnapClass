@@ -141,44 +141,84 @@ def student_screen():
                     show_registration = True
     if show_registration:
         with st.container(border=True):
+
             st.header('Register new Profile')
-            new_name = st.text_input("Enter your name", placeholder='E.g. Harshit Pundir')
+
+            new_name = st.text_input(
+                "Enter your name",
+                placeholder='E.g. Harshit Pundir'
+            )
 
             st.subheader('Optional : Voice Enrollment')
-            st.info("Enroll your for voice only attendance")
 
+            st.info("Enroll your voice for voice-only attendance")
 
             audio_data = None
 
             try:
-                audio_data = st.audio_input('Record a short phrase like I am present, My name is Harshit.')
+                audio_data = st.audio_input(
+                    'Record a short phrase like I am present, My name is Harshit.'
+                )
+
             except Exception:
                 st.error('Audio Data failed!')
 
+            # DEBUG (optional)
+            if audio_data:
+                audio_bytes = audio_data.getvalue()
+
+                st.write("Audio Size:", len(audio_bytes))
+
+                st.audio(audio_bytes)
+
             if st.button('Create Account', type='primary'):
+
                 if new_name:
+
                     with st.spinner('Creating profile..'):
+
                         img = np.array(Image.open(photo_source))
-                        encodings= get_face_embeddings(img)
+
+                        encodings = get_face_embeddings(img)
+
                         if encodings:
+
                             face_emb = encodings[0].tolist()
 
                             voice_emb = None
-                            if audio_data:
-                                voice_emb = get_voice_embedding(audio_data.read())
 
-                            response_data = create_student(new_name, face_embedding=face_emb, voice_embedding=voice_emb)
+                            if audio_data:
+
+                                audio_bytes = audio_data.getvalue()
+
+                                voice_emb = get_voice_embedding(
+                                    audio_bytes
+                                )
+
+                            response_data = create_student(
+                                new_name,
+                                face_embedding=face_emb,
+                                voice_embedding=voice_emb
+                            )
 
                             if response_data:
+
                                 train_classifier()
+
                                 st.session_state.is_logged_in = True
                                 st.session_state.user_role = 'student'
                                 st.session_state.student_data = response_data[0]
+
                                 st.toast(f'Profile Created! Hi {new_name}!')
+
                                 time.sleep(1)
+
                                 st.rerun()
+
                         else:
-                            st.error('Couldnt capture your facial features for registration')
+                            st.error(
+                                'Couldnt capture your facial features for registration'
+                            )
 
                 else:
                     st.warning('Please enter your name!')
