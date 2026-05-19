@@ -66,13 +66,26 @@ https://usesnapclass.streamlit.app/
 # 📸 Screenshots
 
 ## Landing Page
-_Add screenshot here_
+
+![Landing Page](assets/snap-landing.png)
+
+---
+
+## Student Face Login
+
+![Student Login](assets/snap-student-flow-1-login.png)
+
+---
+
+## Teacher Login
+
+![Teacher Login](assets/snap-teacher-flow-1-login.png)
+
+---
 
 ## Teacher Dashboard
-_Add screenshot here_
 
-## Face Recognition Attendance
-_Add screenshot here_
+![Teacher Dashboard](assets/snap-teacher-flow-2-dashboard.png)
 
 ---
 
